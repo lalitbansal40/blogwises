@@ -1,0 +1,96 @@
+// import BlogCard from "@/components/Card";
+
+
+// export default function BlogListPage({ blogs }: BlogListPageProps) {
+//   return (
+//     <>
+//    <ul className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+//         {blogs?.map((post) => (
+//           <li key={post._id} className="w-full" >
+//             <BlogCard {...post} />
+//           </li>
+//         ))}
+//       </ul>
+//     </>
+//   );
+// }
+
+
+
+
+
+import Image from 'next/image';
+ type BlogPost = {
+    title: string;
+    description: string;
+    imageurl?: string;
+    category?: string;
+    _id: string;
+  };
+  
+  type BlogListPageProps = {
+    blogs: BlogPost[];
+  };
+
+  function truncateWords(text: string, maxWords: number): string {
+    const words = text.split(' ');
+    return words.length > maxWords
+      ? words.slice(0, maxWords).join(' ') + '...'
+      : text;
+  }
+
+export default function BlogCards({ blogs }: BlogListPageProps) {
+  return (
+    <div className=" py-12 px-6 sm:py-24 lg:px-6">
+      <div className="max-w-8xl mx-auto">
+        <div className="grid gap-6 lg:grid-cols-4">
+          {blogs?.map((post, index) => (
+            <div key={post._id} className="bg-white rounded-2xl shadow-md overflow-hidden">
+              <div className="h-48 w-full relative">
+                <Image
+                  src={post?.imageurl || ""}
+                  alt={post?.title}
+                  layout="fill"
+                  objectFit="cover"
+                  className="rounded-t-2xl"
+                />
+              </div>
+              <div className="p-6">
+                <div className="text-sm text-gray-500 flex items-center space-x-3">
+                  <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-xs font-medium text-gray-700">
+                    {post?.category}
+                  </span>
+                </div>
+                <h3 className="mt-2 text-lg font-semibold text-gray-900 hover:text-blue-600">
+                  {post?.title}
+                </h3>
+                <p className="mt-3 text-sm text-gray-600">
+                 {truncateWords(post.description, 18)}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+
+export async function getServerSideProps() {
+  try {
+    const res = await fetch(`https://blog-backend-3lxt.onrender.com/api/blogList?limit=5000`);
+    const data = await res.json();
+
+    return {
+      props: {
+        blogs: data.blogs, // ✅ only pass what's needed
+      },
+    };
+  } catch (error) {
+    console.error("Error fetching blog data:", error);
+    return {
+      notFound: true,
+    };
+  }
+}
