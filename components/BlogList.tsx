@@ -1,31 +1,12 @@
-// import BlogCard from "@/components/Card";
-
-
-// export default function BlogListPage({ blogs }: BlogListPageProps) {
-//   return (
-//     <>
-//    <ul className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-//         {blogs?.map((post) => (
-//           <li key={post._id} className="w-full" >
-//             <BlogCard {...post} />
-//           </li>
-//         ))}
-//       </ul>
-//     </>
-//   );
-// }
-
-
-
-
-
 import Image from 'next/image';
+import Link from 'next/link';
  type BlogPost = {
     title: string;
     description: string;
     imageurl?: string;
     category?: string;
     _id: string;
+    blogid:string;
   };
   
   type BlogListPageProps = {
@@ -45,7 +26,7 @@ export default function BlogCards({ blogs }: BlogListPageProps) {
       <div className="max-w-8xl mx-auto">
         <div className="grid gap-6 lg:grid-cols-4">
           {blogs?.map((post, index) => (
-            <div key={post._id} className="bg-white rounded-2xl shadow-md overflow-hidden">
+            <Link href={`blog/${post.blogid}`} key={post._id} className="bg-white rounded-2xl shadow-md overflow-hidden hover:cursor-pointer ">
               <div className="h-48 w-full relative">
                 <Image
                   src={post?.imageurl || ""}
@@ -61,14 +42,14 @@ export default function BlogCards({ blogs }: BlogListPageProps) {
                     {post?.category}
                   </span>
                 </div>
-                <h3 className="mt-2 text-lg font-semibold text-gray-900 hover:text-blue-600">
+                <h3 className="mt-2 text-lg font-semibold text-gray-900">
                   {post?.title}
                 </h3>
                 <p className="mt-3 text-sm text-gray-600">
                  {truncateWords(post.description, 18)}
                 </p>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

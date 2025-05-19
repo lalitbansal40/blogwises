@@ -3,12 +3,13 @@
 import { useState } from 'react'
 import { Dialog, DialogPanel } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import Link from 'next/link'
 
 const navigation = [
-    { name: 'Home', href: '#' },
-    { name: 'About Us', href: '#' },
-    { name: 'Technology', href: '#' },
-    { name: 'Privacy & Policy', href: '#' },
+    { name: 'Home', href: '/' },
+    { name: 'About Us', href: '/aboutus' },
+    { name: 'Technology', href: '/technology' },
+    { name: 'Privacy & Policy', href: '/privacy' },
   ]
 
 export default function Example() {
@@ -20,7 +21,7 @@ export default function Example() {
         <nav aria-label="Global" className="flex items-center justify-between p-6 lg:px-8">
           <div className="flex lg:flex-1">
             <a href="#" className="-m-1.5 p-1.5">
-              <p className='font-bold text-xl' >Blog Wises</p>
+              <Link href="/" className='font-bold text-xl' >Blog Wises</Link>
             </a>
           </div>
           <div className="flex lg:hidden">
