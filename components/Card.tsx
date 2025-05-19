@@ -6,7 +6,7 @@ type props = {
     imageurl?: string;
     category?: string;
   };
-export default function BlogCard({ title, description, imageurl, category }: props) {
+export default function BlogCard({ title, description, imageurl }: props) {
   return (
     <Card className="bg-white w-[300px] h-[450px] flex flex-col justify-between overflow-hidden">
     <CardHeader className="pb-0 pt-2 px-4">
