@@ -25,7 +25,7 @@ export default function BlogCards({ blogs }: BlogListPageProps) {
     <div className=" py-12 px-6 sm:py-24 lg:px-6">
       <div className="max-w-8xl mx-auto">
         <div className="grid gap-6 lg:grid-cols-4">
-          {blogs?.map((post, index) => (
+          {blogs?.map((post) => (
             <Link href={`blog/${post.blogid}`} key={post._id} className="bg-white rounded-2xl shadow-md overflow-hidden hover:cursor-pointer ">
               <div className="h-48 w-full relative">
                 <Image
