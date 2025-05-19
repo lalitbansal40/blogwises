@@ -16,6 +16,5 @@ export function Providers({ children }: ProvidersProps) {
     <HeroUIProvider>
       {children}
     </HeroUIProvider>
-    // </EmotionProvider>
   );
 }
