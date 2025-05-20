@@ -10,7 +10,6 @@ const navigation = [
     { name: 'Home', href: '/' },
     { name: 'About Us', href: '/aboutus' },
     { name: 'Technology', href: '/technology' },
-    { name: 'Privacy & Policy', href: '/privacy' },
   ]
 
 export default function Example() {
@@ -21,9 +20,7 @@ export default function Example() {
       <header className="absolute inset-x-0 top-0 z-50">
         <nav aria-label="Global" className="flex items-center justify-between p-6 lg:px-8">
           <div className="flex lg:flex-1">
-            <a href="#" className="-m-1.5 p-1.5">
               <Link href="/" className='font-bold text-xl' >Blog Wises</Link>
-            </a>
           </div>
           <div className="flex lg:hidden">
             <button

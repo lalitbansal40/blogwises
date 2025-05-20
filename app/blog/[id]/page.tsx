@@ -1,26 +1,44 @@
+// app/blog/[id]/BlogDetail.tsx
+"use client";
+
+import { useParams } from 'next/navigation';
+import { useEffect, useState } from 'react';
 import { getBlogById } from '@/lib/getBlogs';
 import { Card, CardContent, Typography } from '@mui/material';
 import Image from 'next/image';
-import { notFound } from 'next/navigation';
 
-type PageProps = {
-  params: { id: string };
+export type BlogPost = {
+  title: string;
+  description: string;
+  imageurl: string;
+  category: string;
+  _id: string;
+  content: string;
 };
 
-export default async function BlogPage({ params }: PageProps) {
-  const blogPost = await getBlogById(params.id);
+export default function BlogDetail() {
+  const { id } = useParams<{ id: string }>();
+  const [blogPost, setBlogPost] = useState<BlogPost>({} as BlogPost );
 
-  if (!blogPost) return notFound();
+  useEffect(() => {
+    if (!id) return;
+
+    const fetchBlog = async () => {
+      const data = await getBlogById(id);
+      setBlogPost(data);
+    };
+
+    fetchBlog();
+  }, [id]);
+
+  if (!blogPost) return <p className="p-8">Loading...</p>;
 
   return (
     <div className="min-h-screen pt-12 px-4 w-full">
       <div className="mx-auto">
         <Card>
           <div className="space-y-2 p-2 pt-2 pb-12">
-            <Typography
-              variant="h3"
-              className="!font-extrabold !text-gray-900 leading-tight"
-            >
+            <Typography variant="h3" className="!font-extrabold !text-gray-900 leading-tight">
               {blogPost.title}
             </Typography>
             <span className="mt-2 inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-md font-medium text-green-700 ring-1 ring-green-600/20 ring-inset">
@@ -30,7 +48,7 @@ export default async function BlogPage({ params }: PageProps) {
 
           <div className="relative w-full h-80 md:h-[28rem]">
             <Image
-              src={blogPost.imageurl}
+              src={blogPost.imageurl.trim() }
               alt={blogPost.title}
               fill
               className="object-cover"
@@ -39,10 +57,7 @@ export default async function BlogPage({ params }: PageProps) {
           </div>
 
           <CardContent className="p-8 space-y-6">
-            <Typography
-              variant="body1"
-              className="!text-gray-700 text-lg leading-relaxed"
-            >
+            <Typography variant="body1" className="!text-gray-700 text-lg leading-relaxed">
               {blogPost.description}
             </Typography>
 

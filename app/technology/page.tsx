@@ -1,0 +1,67 @@
+import Image from 'next/image';
+import Link from 'next/link';
+import HeroSection from "@/components/HeroSection";
+import { ApiResponse, getBlogs } from '@/lib/getBlogs';
+
+function truncateWords(text: string, maxWords: number): string {
+  const words = text.split(' ');
+  return words.length > maxWords
+    ? words.slice(0, maxWords).join(' ') + '...'
+    : text;
+}
+
+export default async function BlogCards() {
+  const blogs: ApiResponse = await getBlogs(1);
+  const allowedCategories = ['Programming', 'Web Design', 'Photography'];
+
+  const filteredBlogs = blogs.blogs?.filter((post) =>
+    allowedCategories.includes((post.category || '').trim())
+  );
+
+  return (
+    <>
+    <HeroSection />
+    <div className="py-12 px-6 sm:py-24 lg:px-6">
+      <div className="max-w-7xl mx-auto">
+        <h2 className="text-3xl font-bold tracking-tight text-gray-900 mb-10">
+          Latest Blog Posts
+        </h2>
+        {filteredBlogs?.length > 0 ? (
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {filteredBlogs.map((post) => (
+              <Link
+                href={`/blog/${post.blogid}`}
+                key={post._id}
+                className="bg-white rounded-2xl shadow hover:shadow-lg transition-shadow duration-300 overflow-hidden"
+              >
+                <div className="h-48 w-full relative">
+                  <Image
+                    src={(post.imageurl || '').trim()}
+                    alt={post.title}
+                    layout="fill"
+                    objectFit="cover"
+                    className="rounded-t-2xl"
+                  />
+                </div>
+                <div className="p-5">
+                  <span className="inline-block mb-2 bg-indigo-100 text-indigo-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded">
+                    {post.category}
+                  </span>
+                  <h3 className="text-lg font-semibold text-gray-900">
+                    {post.title}
+                  </h3>
+                  <p className="mt-2 text-sm text-gray-600">
+                    {truncateWords(post.description, 18)}
+                  </p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        ) : (
+          <p className="text-center text-gray-500 text-lg">No blog posts found in selected categories.</p>
+        )}
+      </div>
+    </div>
+    </>
+  );
+}

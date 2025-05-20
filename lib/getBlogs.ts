@@ -1,3 +1,5 @@
+import { Metadata } from "next";
+
 // lib/getBlogs.ts
 export type BlogPost = {
     title: string;
@@ -45,4 +47,18 @@ export async function getBlogById(id: string): Promise<Blog> {
     if (!res.ok) throw new Error("Failed to fetch blogs");
 
     return res.json();
+}
+
+
+export async function generateMetadata(): Promise<Metadata> {
+    const data: ApiResponse = await getBlogs(1);
+
+    const blogSummaries = data.blogs
+        .map((b) => `${b.title}${b.description ? ` - ${b.description}` : ""}`)
+        .join(" | ");
+
+    return {
+        title: "Blog Home",
+        description: `Read: ${blogSummaries}`,
+    };
 }
