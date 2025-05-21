@@ -20,6 +20,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Blog Wises",
   description: "Discover thoughtful articles and insights on Blog Wises.",
+    other: {
+    'google-site-verification': 'EieLob6DcEfRLtpYU4ibHRE3VsyRQSEzvtEHa3TT9Sg',
+  },
 };
 
 export default function RootLayout({
