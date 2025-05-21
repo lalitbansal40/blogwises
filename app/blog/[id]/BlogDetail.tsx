@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import { getBlogById } from '@/lib/getBlogs';
 import { Card, CardContent, Typography } from '@mui/material';
 import Image from 'next/image';
-
+import { usePathname } from 'next/navigation';
 type BlogPost = {
   title: string;
   description: string;
@@ -15,11 +15,10 @@ type BlogPost = {
   content: string;
 };
 
-type BlogDetailProps = {
-  id: string;
-};
 
-export default function BlogDetail({ id }: BlogDetailProps) {
+export default function BlogDetail() {
+    const pathname = usePathname();
+    const blogId = pathname.split('/').pop() as string ;
   const [blogPost, setBlogPost] = useState<BlogPost | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -27,7 +26,7 @@ export default function BlogDetail({ id }: BlogDetailProps) {
   useEffect(() => {
     const fetchBlog = async () => {
       try {
-        const data = await getBlogById(id);
+        const data = await getBlogById(blogId);
         setBlogPost(data);
       } catch (err) {
         setError('Failed to load blog post.');
@@ -37,7 +36,7 @@ export default function BlogDetail({ id }: BlogDetailProps) {
     };
 
     fetchBlog();
-  }, [id]);
+  }, [blogId]);
 
   if (loading) return <p className="p-8">Loading...</p>;
   if (error || !blogPost) return <p className="p-8 text-red-600">{error || 'Not found'}</p>;
