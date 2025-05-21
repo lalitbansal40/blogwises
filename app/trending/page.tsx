@@ -11,7 +11,6 @@ function truncateWords(text: string, maxWords: number): string {
     ? words.slice(0, maxWords).join(' ') + '...'
     : text;
 }
-
 export async function generateMetadata({
   searchParams,
 }: {
@@ -20,7 +19,7 @@ export async function generateMetadata({
   const pageParam = searchParams?.page;
   const currentPage =
     typeof pageParam === "string" ? parseInt(pageParam, 10) : 1;
-  const categoryParam = "Programming,Web Design,Photography";
+  const categoryParam = "trending";
   const categoryList = categoryParam
     .split(",")
     .map((c) => c.trim())
@@ -29,12 +28,12 @@ export async function generateMetadata({
   const blogs: ApiResponse = await getBlogs(currentPage, categoryList);
 
   return {
-    title: "Technology",
+    title: "Trending",
     description: `${blogs}`,
   };
 }
 
-export default async function Technology({
+export default async function Trending({
   searchParams,
 }: {
   searchParams?: any;
@@ -42,7 +41,7 @@ export default async function Technology({
   const pageParam = searchParams?.page;
   const currentPage =
     typeof pageParam === "string" ? parseInt(pageParam, 10) : 1;
-  const categoryParam = "Programming,Web Design,Photography";
+  const categoryParam = "trending";
   const categoryList = categoryParam
     .split(',')
     .map((c) => c.trim())

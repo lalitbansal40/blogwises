@@ -28,15 +28,30 @@ export interface Blog {
 }
 
 
-export async function getBlogs(page: number = 1): Promise<ApiResponse> {
-    const res = await fetch(`https://blog-backend-3lxt.onrender.com/api/blogList?page=${page}`, {
-        cache: "no-store",
-    });
+export async function getBlogs(
+    page: number = 1,
+    categories?: string[]
+): Promise<ApiResponse> {
+    const params = new URLSearchParams();
+    params.set("page", page.toString());
+
+    if (categories && categories.length > 0) {
+        params.set("category", categories.join(","));
+    }
+
+    const res = await fetch(
+        `https://blog-backend-3lxt.onrender.com/api/blogList?${params.toString()}`,
+        {
+            cache: "no-store",
+        }
+    );
 
     if (!res.ok) throw new Error("Failed to fetch blogs");
 
     return res.json();
 }
+
+
 
 
 export async function getBlogById(id: string): Promise<Blog> {

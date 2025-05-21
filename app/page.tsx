@@ -15,8 +15,8 @@ export async function generateMetadata(): Promise<Metadata> {
     .join(" | ");
 
   return {
-    title: "Blog Home",
-    description: `Read: ${blogSummaries}`,
+    title: "Blog Wises",
+    description: blogSummaries,
   };
 }
 

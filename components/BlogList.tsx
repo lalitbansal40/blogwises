@@ -1,24 +1,24 @@
 import Image from 'next/image';
 import Link from 'next/link';
- type BlogPost = {
-    title: string;
-    description: string;
-    imageurl?: string;
-    category?: string;
-    _id: string;
-    blogid:string;
-  };
-  
-  type BlogListPageProps = {
-    blogs: BlogPost[];
-  };
+type BlogPost = {
+  title: string;
+  description: string;
+  imageurl?: string;
+  category?: string;
+  _id: string;
+  blogid: string;
+};
 
-  function truncateWords(text: string, maxWords: number): string {
-    const words = text.split(' ');
-    return words.length > maxWords
-      ? words.slice(0, maxWords).join(' ') + '...'
-      : text;
-  }
+type BlogListPageProps = {
+  blogs: BlogPost[];
+};
+
+function truncateWords(text: string, maxWords: number): string {
+  const words = text.split(' ');
+  return words.length > maxWords
+    ? words.slice(0, maxWords).join(' ') + '...'
+    : text;
+}
 
 export default function BlogCards({ blogs }: BlogListPageProps) {
   return (
@@ -26,7 +26,10 @@ export default function BlogCards({ blogs }: BlogListPageProps) {
       <div className="max-w-8xl mx-auto">
         <div className="grid gap-6 lg:grid-cols-4">
           {blogs?.map((post) => (
-            <Link href={`blog/${post.blogid}`} key={post._id} className="bg-white rounded-2xl shadow-md overflow-hidden hover:cursor-pointer ">
+            <Link
+              //  href={`blog/${post.blogid}`} 
+              href={`blog?id=${post.blogid}`}
+              key={post._id} className="bg-white rounded-2xl shadow-md overflow-hidden hover:cursor-pointer ">
               <div className="h-48 w-full relative">
                 <Image
                   src={post?.imageurl || ""}
@@ -46,7 +49,7 @@ export default function BlogCards({ blogs }: BlogListPageProps) {
                   {post?.title}
                 </h3>
                 <p className="mt-3 text-sm text-gray-600">
-                 {truncateWords(post.description, 18)}
+                  {truncateWords(post.description, 18)}
                 </p>
               </div>
             </Link>

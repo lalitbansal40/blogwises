@@ -1,3 +1,4 @@
+import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 type BlogPost = {
@@ -6,59 +7,67 @@ type BlogPost = {
   imageurl?: string;
   category?: string;
   _id: string;
-  blogid:string;
+  blogid: string;
 };
-export default function HomePage() {
-    const images =[
-        "https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&h=528&q=80",
-        "https://images.unsplash.com/photo-1485217988980-11786ced9454?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&h=528&q=80",
-        "https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&crop=focalpoint&fp-x=.4&w=396&h=528&q=80",
-        "https://images.unsplash.com/photo-1670272504528-790c24957dda?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&crop=left&w=400&h=528&q=80",
-        "https://images.unsplash.com/photo-1670272505284-8faba1c31f7d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&h=528&q=80"
-    ]
 
-    const BlogImage:BlogPost[] = [
-      {
-        _id: "67e8ff90ffc36c0471e0951f",
-        title: "Introduction to Web Development: Learn HTML, CSS & JavaScript for Beginners",
-        description: "Discover the fundamentals of web development in this beginner-friendly course. Learn how to build websites using HTML, CSS, and JavaScript. Whether you're starting from scratch or exploring a new career path, this guide will help you gain essential coding skills and confidently start your web development journey.",
-        imageurl: "https://lalitbansal2004.s3.us-east-1.amazonaws.com/bloglistimages/webdevelopment.jpg",
-        category: "Programming",
-        blogid: "67e8ff46ffc36c0471e09514"
-      },
-      {
-        _id: "67e8ff90ffc36c0471e09520",
-        title: "Mastering JavaScript Fundamentals: The Complete Beginner-to-Advanced Guide (2025)",
-        description: "Master JavaScript fundamentals with this complete beginner-to-advanced guide for 2025. Learn core concepts, syntax, and real-world applications of JavaScript. Perfect for beginners and aspiring web developers. Start coding interactive websites today with easy tutorials, practical examples, and expert tips to boost your web development skills fast.",
-        imageurl: "https://lalitbansal2004.s3.us-east-1.amazonaws.com/bloglistimages/javascript.jpg",
-        category: "Programming",
-        blogid: "67e8ff46ffc36c0471e09515"
-      },
-      {
-        _id: "67e8ff90ffc36c0471e09521",
-        title: "Mastering CSS Flexbox in 2025: The Only Guide You'll Ever Need",
-        description: "Mastering CSS Flexbox in 2025: The Only Guide You'll Ever Need is your ultimate resource to learn modern responsive web design. Discover how Flexbox works with real-world examples, pro tips, and step-by-step tutorials. Perfect for beginners and pros looking to master CSS layouts in 2025 and beyond.",
-        imageurl: "https://lalitbansal2004.s3.us-east-1.amazonaws.com/bloglistimages/css_flex_box.png",
-        category: "Web Design",
-        blogid: "67e8ff46ffc36c0471e09516"
-      },
-    ]
-    function truncateWords(text: string, maxWords: number): string {
-      const words = text?.split(' ');
-      return words?.length > maxWords
-        ? words.slice(0, maxWords).join(' ') + '...'
-        : text;
-    }
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: "About Us",
+    description: `Blog Wises`,
+  };
+}
+
+export default function HomePage() {
+  const images = [
+    "https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&h=528&q=80",
+    "https://images.unsplash.com/photo-1485217988980-11786ced9454?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&h=528&q=80",
+    "https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&crop=focalpoint&fp-x=.4&w=396&h=528&q=80",
+    "https://images.unsplash.com/photo-1670272504528-790c24957dda?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&crop=left&w=400&h=528&q=80",
+    "https://images.unsplash.com/photo-1670272505284-8faba1c31f7d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&h=528&q=80"
+  ]
+
+  const BlogImage: BlogPost[] = [
+    {
+      _id: "67e8ff90ffc36c0471e0951f",
+      title: "Introduction to Web Development: Learn HTML, CSS & JavaScript for Beginners",
+      description: "Discover the fundamentals of web development in this beginner-friendly course. Learn how to build websites using HTML, CSS, and JavaScript. Whether you're starting from scratch or exploring a new career path, this guide will help you gain essential coding skills and confidently start your web development journey.",
+      imageurl: "https://lalitbansal2004.s3.us-east-1.amazonaws.com/bloglistimages/webdevelopment.jpg",
+      category: "Programming",
+      blogid: "67e8ff46ffc36c0471e09514"
+    },
+    {
+      _id: "67e8ff90ffc36c0471e09520",
+      title: "Mastering JavaScript Fundamentals: The Complete Beginner-to-Advanced Guide (2025)",
+      description: "Master JavaScript fundamentals with this complete beginner-to-advanced guide for 2025. Learn core concepts, syntax, and real-world applications of JavaScript. Perfect for beginners and aspiring web developers. Start coding interactive websites today with easy tutorials, practical examples, and expert tips to boost your web development skills fast.",
+      imageurl: "https://lalitbansal2004.s3.us-east-1.amazonaws.com/bloglistimages/javascript.jpg",
+      category: "Programming",
+      blogid: "67e8ff46ffc36c0471e09515"
+    },
+    {
+      _id: "67e8ff90ffc36c0471e09521",
+      title: "Mastering CSS Flexbox in 2025: The Only Guide You'll Ever Need",
+      description: "Mastering CSS Flexbox in 2025: The Only Guide You'll Ever Need is your ultimate resource to learn modern responsive web design. Discover how Flexbox works with real-world examples, pro tips, and step-by-step tutorials. Perfect for beginners and pros looking to master CSS layouts in 2025 and beyond.",
+      imageurl: "https://lalitbansal2004.s3.us-east-1.amazonaws.com/bloglistimages/css_flex_box.png",
+      category: "Web Design",
+      blogid: "67e8ff46ffc36c0471e09516"
+    },
+  ]
+  function truncateWords(text: string, maxWords: number): string {
+    const words = text?.split(' ');
+    return words?.length > maxWords
+      ? words.slice(0, maxWords).join(' ') + '...'
+      : text;
+  }
 
   return (
     <main className="bg-white text-gray-800 font-sans">
       {/* Hero */}
       <section className="py-12 px-6 text-center bg-gradient-to-r ">
         <h1 className="text-4xl md:text-5xl font-bold mb-4">
-        Read, Explore, and Get Inspired
+          Read, Explore, and Get Inspired
         </h1>
         <p className="max-w-2xl mx-auto text-lg text-gray-600">
-        Dive into carefully curated articles that spark your curiosity, broaden your horizons, and fuel your creativity—no uploads needed, just pure inspiration waiting for you.
+          Dive into carefully curated articles that spark your curiosity, broaden your horizons, and fuel your creativity—no uploads needed, just pure inspiration waiting for you.
         </p>
 
         {/* Images Grid */}
@@ -156,7 +165,7 @@ export default function HomePage() {
                   {post?.title}
                 </h3>
                 <p className="mt-3 text-sm text-gray-600">
-                 {truncateWords(post.description, 18)}
+                  {truncateWords(post.description, 18)}
                 </p>
               </div>
             </Link>
