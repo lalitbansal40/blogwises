@@ -145,7 +145,7 @@ export default function HomePage() {
         <h2 className="text-3xl font-bold text-center mb-12">From the blog</h2>
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {BlogImage.map((post) => (
-            <Link href={`blog/${post.blogid}`} key={post._id} className="bg-white rounded-2xl shadow-md overflow-hidden hover:cursor-pointer ">
+            <Link href={`blog?${post.blogid}`} key={post._id} className="bg-white rounded-2xl shadow-md overflow-hidden hover:cursor-pointer ">
               <div className="h-48 w-full relative">
                 <Image
                   src={post?.imageurl || ""}
