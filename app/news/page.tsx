@@ -62,7 +62,7 @@ export default async function News({
               <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                 {blogs.blogs.map((post) => (
                   <Link
-                    href={`/blog/${post.blogid}`}
+                    href={`/blog?${post.blogid}`}
                     key={post._id}
                     className="bg-white rounded-2xl shadow hover:shadow-lg transition-shadow duration-300 overflow-hidden"
                   >
