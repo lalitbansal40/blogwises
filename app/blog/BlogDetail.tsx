@@ -38,7 +38,7 @@ export default async function BlogDetail({ id }: { id: string }) {
           />
         </div>
 
-        <CardContent className="p-8 space-y-6 w-lg m-2">
+        <CardContent className="p-8 space-y-6 max-w-6xl mx-auto">
           <div
             className="prose prose-indigo max-w-none px-8 "
             dangerouslySetInnerHTML={{ __html: blogPost.content }}
