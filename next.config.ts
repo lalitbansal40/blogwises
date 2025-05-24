@@ -13,7 +13,8 @@ module.exports = {
       "drive.google.com",
       "i.ytimg.com",
       "images.unsplash.com",
-      "media.geeksforgeeks.org"
+      "media.geeksforgeeks.org",
+      "www.pexels.com"
     ],
   },
 };
