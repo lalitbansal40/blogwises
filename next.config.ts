@@ -14,7 +14,7 @@ module.exports = {
       "i.ytimg.com",
       "images.unsplash.com",
       "media.geeksforgeeks.org",
-      "www.pexels.com"
+      "images.pexels.com"
     ],
   },
 };
