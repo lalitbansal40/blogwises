@@ -16,7 +16,8 @@ module.exports = {
       "media.geeksforgeeks.org",
       "images.pexels.com",
       "bsmedia.business-standard.com",
-      "media2.dev.to"
+      "media2.dev.to",
+      "www.hindustantimes.com"
     ],
   },
 };
