@@ -23,7 +23,7 @@ export default function Example() {
       <header className="absolute inset-x-0 top-0 z-50">
         <nav aria-label="Global" className="flex items-center justify-between p-6 lg:px-8">
           <div className="flex lg:flex-1">
-            <Link href="/" className='font-bold text-xl' >Blog Wises</Link>
+            <Link href="/" className='font-bold text-xl' >All Types Blogs</Link>
           </div>
           <div className="flex lg:hidden">
             <button
@@ -48,7 +48,7 @@ export default function Example() {
           <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
             <div className="flex items-center justify-between">
               <Link href="/" className="-m-1.5 p-1.5">
-                Blog Wises
+                All Types Blogs
               </Link>
               <button
                 type="button"

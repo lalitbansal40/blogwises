@@ -13,7 +13,7 @@ type BlogPost = {
 export async function generateMetadata(): Promise<Metadata> {
   return {
     title: "About Us",
-    description: `Blog Wises`,
+    description: `All Types Blogs`,
   };
 }
 

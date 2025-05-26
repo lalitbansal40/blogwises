@@ -18,9 +18,9 @@ const geistMono = Geist_Mono({
 
 // Page metadata
 export const metadata: Metadata = {
-  title: "Blog Wises",
-  description: "Discover thoughtful articles and insights on Blog Wises.",
-    other: {
+  title: "All Types Blogs",
+  description: "Discover thoughtful articles and insights on All Types Blogs.",
+  other: {
     'google-site-verification': 'EieLob6DcEfRLtpYU4ibHRE3VsyRQSEzvtEHa3TT9Sg',
   },
 };

@@ -15,7 +15,7 @@ export async function generateMetadata(): Promise<Metadata> {
     .join(" | ");
 
   return {
-    title: "Blog Wises",
+    title: "All Types Blogs",
     description: blogSummaries,
   };
 }
