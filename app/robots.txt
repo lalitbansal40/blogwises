@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /wp-content/uploads/
+Allow: /wp-content/themes/
+Allow: /wp-content/plugins/
+Sitemap: https://alltypesblogs.online/sitemap.ts
