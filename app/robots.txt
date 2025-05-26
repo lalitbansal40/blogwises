@@ -1,5 +1,28 @@
 User-agent: *
-Allow: /wp-content/uploads/
-Allow: /wp-content/themes/
-Allow: /wp-content/plugins/
-Sitemap: https://alltypesblogs.online/sitemap.ts
+Disallow: /api/
+Disallow: /admin/
+Disallow: /server/
+Disallow: /private/
+Disallow: /drafts/
+Disallow: /temp/
+Disallow: /test/
+Disallow: /search
+Disallow: /?*
+Disallow: /*.pdf$
+Disallow: /*.zip$
+Disallow: /*.tar$
+Disallow: /*.gz$
+Disallow: /*.7z$
+Disallow: /*.exe$
+Disallow: /*.bak$
+Disallow: /*.old$
+Disallow: /*.tmp$
+
+Allow: /blog/
+Allow: /about
+Allow: /contact
+Allow: /technology
+Allow: /news
+Allow: /trending
+
+Sitemap: https://alltypesblogs.online/sitemap.xml
