@@ -17,7 +17,8 @@ module.exports = {
       "images.pexels.com",
       "bsmedia.business-standard.com",
       "media2.dev.to",
-      "www.hindustantimes.com"
+      "www.hindustantimes.com",
+      "i.ytimg.com"
     ],
   },
 };
