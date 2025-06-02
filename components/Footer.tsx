@@ -12,7 +12,7 @@ export default function Footer() {
     <footer className="bg-white border-t mt-16">
       <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-5 gap-8 text-sm text-gray-600">
         <div className="space-y-4 col-span-1">
-          <div className="text-indigo-600 text-3xl font-bold">All Types Blogs</div>
+          <div className="text-indigo-600 text-3xl font-bold">BlogWises</div>
           <p>Making the world a better place through constructing elegant hierarchies.</p>
           <div className="flex space-x-4 pt-4">
             <FaFacebookF className="w-5 h-5 hover:text-indigo-600 cursor-pointer" />
@@ -72,7 +72,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="text-center text-xs text-gray-500 py-4 border-t">
-        © 2025 All Types Blogs, Inc. All rights reserved.
+        © 2025 BlogWises, Inc. All rights reserved.
       </div>
     </footer>
   );
